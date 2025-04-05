@@ -42,9 +42,12 @@ export default function SignupPage() {
   const handleGoogleLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: {
-        redirectTo: "http://localhost:5173/dashboard",
-      },
+    });
+
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        window.location.href = "/dashboard";
+      }
     });
 
     if (error) {
