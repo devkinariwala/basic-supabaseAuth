@@ -46,7 +46,7 @@ export default function SignupPage() {
 
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        window.location.href = "/dashboard";
+        window.location.href = "https://basic-supabase-auth.vercel.app";
       }
     });
 
